@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>JEU — About</title>
+<style>
+@font-face{font-family:Inter;src:url('fonts/Inter_18pt-Medium.ttf')}
+@font-face{font-family:Inter;src:url('fonts/Inter_18pt-SemiBold.ttf');font-weight:700}
+:root{--ink:#090909;--line:#c9c9c5;--mute:#747471;--font:Inter,Arial,sans-serif}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{min-width:320px;background:#fff;color:var(--ink);font-family:var(--font);font-weight:500}
+a{color:inherit;text-decoration:none}
+.nav{position:sticky;top:0;z-index:30;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;min-height:58px;padding:0 28px;background:#fff;border-bottom:1px solid var(--line);backdrop-filter:blur(10px)}
+.logo{font-size:15px;font-weight:700;letter-spacing:-.06em}.nav ul{display:flex;gap:26px;list-style:none}.navlink{font-size:10px;letter-spacing:.08em;line-height:1.2;text-transform:uppercase;transition:opacity .2s}.navlink:hover{opacity:.4}.nav-action{justify-self:end;font-size:11px;letter-spacing:.07em;text-transform:uppercase}.nav-action:after{display:inline-block;width:7px;height:7px;margin-left:9px;border:1px solid;border-radius:50%;content:''}
+.about{max-width:920px;margin:0 auto;padding:110px 28px 90px}
+.label{font-size:10px;letter-spacing:.08em;line-height:1.2;text-transform:uppercase;color:var(--mute)}
+h1{margin-top:28px;font-size:clamp(54px,8vw,104px);font-weight:700;letter-spacing:-.095em;line-height:.82;text-transform:uppercase}
+.intro{max-width:780px;margin-top:70px;font-size:22px;line-height:1.32;letter-spacing:-.035em}
+.text{max-width:680px;margin-top:70px;font-size:14px;line-height:1.55}
+.text p+p{margin-top:28px}
+.info{margin-top:80px;border-top:1px solid var(--line)}
+.info-row{display:grid;grid-template-columns:190px 1fr;min-height:64px;padding:19px 0;border-bottom:1px solid var(--line);font-size:13px;line-height:1.45}
+.info-label{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+.contact{margin-top:80px;padding-top:20px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:flex-end;gap:30px}
+.contact-label{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+.contact-links{display:flex;flex-direction:column;align-items:flex-end;gap:12px}.contact a{font-size:clamp(26px,4vw,48px);font-weight:700;letter-spacing:-.07em;line-height:.9;border-bottom:2px solid;transition:opacity .2s}.contact a:hover{opacity:.4}
+footer{display:grid;grid-template-columns:1fr auto 1fr;padding:19px 28px;border-top:1px solid var(--line);font-size:10px;letter-spacing:.07em;text-transform:uppercase}.footer-center{justify-self:center;color:var(--mute)}.footer-links{display:flex;justify-self:end;gap:20px}.footer-links a:hover{opacity:.4}
+@media(max-width:800px){.contact-links{align-items:flex-start}.nav{grid-template-columns:1fr auto;padding:0 18px}.nav ul{display:none}.about{padding:72px 18px 65px}.intro{margin-top:48px;font-size:19px}.text{margin-top:52px;font-size:13px}.info{margin-top:60px}.info-row{grid-template-columns:115px 1fr;gap:20px}.contact{margin-top:60px;display:block}.contact a{display:inline-block;margin-top:24px}footer{grid-template-columns:1fr;gap:13px;padding:18px}.footer-center,.footer-links{justify-self:start}.footer-links{flex-wrap:wrap}}
+
+.about-section { margin-top: 72px; }
+.about-section h2 { margin: 0 0 28px; font-size: 14px; font-weight: 500; text-transform: uppercase; letter-spacing: .04em; }
+.about-list { border-top: 1px solid currentColor; }
+.about-list > div { display: grid; grid-template-columns: 1fr 2fr; gap: 32px; padding: 18px 0; border-bottom: 1px solid currentColor; }
+.about-list strong { font-weight: 500; }
+.about-list span, .section-text { max-width: 720px; }
+.process { border-top: 1px solid currentColor; }
+.process-row { display: grid; grid-template-columns: 64px 1fr; gap: 24px; padding: 24px 0; border-bottom: 1px solid currentColor; }
+.process-number { font-variant-numeric: tabular-nums; }
+.process-row h3 { margin: 0 0 8px; font-size: inherit; font-weight: 500; }
+.process-row p { margin: 0; max-width: 720px; }
+.contact p { max-width: 620px; margin: 0; }
+@media (max-width: 700px) { .about-section { margin-top: 52px; } .about-list > div { grid-template-columns: 1fr; gap: 8px; } .process-row { grid-template-columns: 42px 1fr; gap: 16px; } }
+
+.lang-switch{display:inline-flex;align-items:center;gap:4px;margin-right:18px;font-size:10px;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
+.lang-switch button{padding:0;border:0;background:none;color:var(--mute);font:inherit;letter-spacing:inherit;cursor:pointer}
+.lang-switch button.active{color:var(--ink)}
+.nav-right{justify-self:end;display:flex;align-items:center;white-space:nowrap}
+.nav-right .nav-action{justify-self:auto}
+@media(max-width:800px){.lang-switch{margin-right:12px}.nav-right{min-width:0}.nav-action{font-size:10px}}
+
+#thermal-layer{position:fixed;inset:0;z-index:100;width:100%;height:100%;pointer-events:none;mix-blend-mode:normal}
+
+/* Mobile navigation */
+.mobile-menu{display:none}
+@media(max-width:800px){
+  .logo{cursor:pointer}
+  .mobile-menu{position:fixed;top:58px;right:0;left:0;z-index:29;display:flex;flex-direction:column;gap:0;padding:8px 18px 22px;background:#fff;border-bottom:1px solid var(--line);box-shadow:0 12px 28px rgba(0,0,0,.06);transform:translateY(-120%);opacity:0;pointer-events:none;transition:transform .22s ease,opacity .22s ease}
+  .mobile-menu.open{transform:translateY(0);opacity:1;pointer-events:auto}
+  .mobile-menu a{display:flex;align-items:center;min-height:58px;border-bottom:1px solid var(--line);font-size:28px;font-weight:700;letter-spacing:-.06em;line-height:.9;text-transform:uppercase}
+  .mobile-menu a:first-child{border-top:1px solid var(--line)}
+  .mobile-menu-backdrop{display:none;position:fixed;inset:58px 0 0;z-index:28;background:rgba(0,0,0,.08);opacity:0;pointer-events:none;transition:opacity .22s ease}
+  .mobile-menu-backdrop.open{display:block;opacity:1;pointer-events:auto}
+}
+</style>
+</head>
+<body>
+<header class="nav">
+<a class="logo" href="index.html">JEU MANUFACTURE</a>
+<ul>
+<li><a class="navlink" href="portfolio.html">Portfolio</a></li>
+<li><a class="navlink" href="services.html">Services</a></li>
+<li><a class="navlink" href="about.html">About</a></li>
+<li><a class="navlink" href="contact.html">Contact</a></li>
+</ul>
+<div class="nav-right"><div class="lang-switch" aria-label="Language"><button type="button" data-lang="en" class="active">ENG</button><span>/</span><button type="button" data-lang="uk">UKR</button></div><a class="nav-action" href="contact.html">Start a project</a></div>
+</header>
+<div class="mobile-menu-backdrop" aria-hidden="true"></div>
+<nav class="mobile-menu" aria-label="Mobile navigation" aria-hidden="true">
+  <a href="index.html" data-i18n="Home">Home</a>
+  <a href="portfolio.html" data-i18n="Portfolio">Portfolio</a>
+  <a href="services.html" data-i18n="Services">Services</a>
+  <a href="about.html" data-i18n="About">About</a>
+  <a href="contact.html" data-i18n="Contact">Contact</a>
+</nav>
+
+
+<main class="about">
+<div class="label">About / JEU Manufacture</div>
+<h1>We build products, not just garments.</h1>
+
+<p class="intro">JEU Manufacture is a production partner for independent labels, designers and growing brands. We work across product development and manufacturing, helping turn an idea, reference or existing design into a finished physical product.</p>
+
+<div class="text">
+<p>We can join a project at different stages. Some clients come with a finished technical drawing or collection, while others start with a single idea and need help developing it into something manufacturable.</p>
+<p>Production is based in Ukraine. We work remotely with clients internationally and coordinate development, manufacturing, finishing, fulfillment and delivery around the needs of each project.</p>
+</div>
+
+<section class="about-section">
+<h2>Who we work with</h2>
+<div class="about-list">
+<div><strong>Independent labels</strong><span>Established or emerging fashion brands developing their own products.</span></div>
+<div><strong>Small &amp; growing brands</strong><span>Teams building collections and increasing their production step by step.</span></div>
+<div><strong>Designers</strong><span>Designers developing individual garments, accessories or complete collections.</span></div>
+<div><strong>Creative projects</strong><span>Collaborations, limited projects and products that require a physical production partner.</span></div>
+<div><strong>New fashion businesses</strong><span>Founders starting with a concept and building their first products and production system.</span></div>
+</div>
+<p class="section-text">We work with people at different stages of building a product or brand. The scope can be as focused as developing one garment or as broad as supporting a collection from its first idea through production and launch.</p>
+</section>
+
+<section class="about-section">
+<h2>From idea to finished product</h2>
+<div class="process">
+<div class="process-row"><div class="process-number">01</div><div><h3>Understand</h3><p>We define the product, references, requirements and intended result.</p></div></div>
+<div class="process-row"><div class="process-number">02</div><div><h3>Develop</h3><p>We work through technical drawings, patterns, materials and samples until the product is ready for production.</p></div></div>
+<div class="process-row"><div class="process-number">03</div><div><h3>Produce</h3><p>Once the product is approved, we coordinate manufacturing, finishing and quality control.</p></div></div>
+<div class="process-row"><div class="process-number">04</div><div><h3>Deliver</h3><p>Finished products can be prepared for fulfillment, shipping or further distribution.</p></div></div>
+</div>
+</section>
+
+<section class="about-section">
+<h2>What we do</h2>
+<p class="section-text">We develop and produce garments and physical product details across the full production process. This includes technical drawings, pattern making, sample development, fabric and material sourcing, printing and embroidery, washing, distressing and waxing, custom metal hardware and engraving, brand elements, product photography, fulfillment and shipping.</p>
+<p class="section-text">For brands that need broader support, we can also assist with brand setup, collection launch preparation, e-commerce, content and sales operations.</p>
+</section>
+
+<div class="info">
+<div class="info-row"><div class="info-label">Based in</div><div>Ukraine</div></div>
+<div class="info-row"><div class="info-label">Work with</div><div>Independent labels / designers / small &amp; growing brands / creative projects</div></div>
+<div class="info-row"><div class="info-label">Development</div><div>Technical drawings / patterns / samples / materials / product development</div></div>
+<div class="info-row"><div class="info-label">Production</div><div>Garment manufacturing / printing / embroidery / treatments / hardware</div></div>
+<div class="info-row"><div class="info-label">Additional</div><div>Brand guidance / photography / fulfillment / shipping</div></div>
+</div>
+
+<div class="contact">
+<div class="contact-label">Have a product in mind?</div>
+<p>Tell us what you are working on, where you are in the process and what you need help with.</p>
+<div class="contact-links"><a href="mailto:jeumanufacture@gmail.com">jeumanufacture@gmail.com</a><a href="https://t.me/jeu_team/" target="_blank" rel="noopener noreferrer">Telegram</a></div>
+</div>
+</main>
+
+<footer>
+<span>© JEU Manufacture / 2026</span>
+<div class="footer-center">Garment manufacture</div>
+<div class="footer-links">
+<a href="https://www.instagram.com/jeu_manufacture/" target="_blank" rel="noopener">Instagram</a>
+
+<a href="https://t.me/jeu_team/" target="_blank" rel="noopener noreferrer">Telegram</a> <a href="mailto:jeumanufacture@gmail.com">E-MAIL</a>
+<a href="privacy-policy.html">Privacy</a>
+
+<a href="cookie-policy.html">Cookies</a>
+</div>
+</footer>
+
+
+<style>
+
+</style>
+
+<canvas id="thermal-layer" aria-hidden="true"></canvas>
+<script>
+(function(){
+  const canvas=document.getElementById('thermal-layer'); if(!canvas) return;
+  const ctx=canvas.getContext('2d'); const spots=[]; let dpr=1,width=0,height=0,raf=0,touching=false,lastTouch=null;
+  const touchDevice=()=>window.matchMedia('(pointer: coarse)').matches||'ontouchstart' in window;
+  function resize(){dpr=Math.min(window.devicePixelRatio||1,2);width=innerWidth;height=innerHeight;canvas.width=Math.round(width*dpr);canvas.height=Math.round(height*dpr);canvas.style.width=width+'px';canvas.style.height=height+'px';ctx.setTransform(dpr,0,0,dpr,0,0)}
+  function addSpot(x,y,size,life,alpha){spots.push({x,y,size,life,maxLife:life,alpha:alpha==null?1:alpha,seed:Math.random()*Math.PI*2})}
+  function drawSpot(s,now){const progress=1-s.life/s.maxLife,fade=Math.pow(1-progress,1.1),radius=s.size*(1+Math.sin(now*.006+s.seed)*.035),a=s.alpha*fade;const g=ctx.createRadialGradient(s.x,s.y,0,s.x,s.y,radius);g.addColorStop(0,'rgba(255,255,225,'+.98*a+')');g.addColorStop(.08,'rgba(255,245,40,'+.98*a+')');g.addColorStop(.22,'rgba(255,125,0,'+.96*a+')');g.addColorStop(.40,'rgba(255,20,35,'+.90*a+')');g.addColorStop(.58,'rgba(225,0,115,'+.76*a+')');g.addColorStop(.76,'rgba(65,15,185,'+.48*a+')');g.addColorStop(1,'rgba(15,70,210,0)');ctx.fillStyle=g;ctx.beginPath();ctx.arc(s.x,s.y,radius,0,Math.PI*2);ctx.fill()}
+  function render(now){ctx.clearRect(0,0,width,height);for(let i=spots.length-1;i>=0;i--){const s=spots[i];s.life-=16.67;if(s.life<=0){spots.splice(i,1);continue}drawSpot(s,now)}if(spots.length)raf=requestAnimationFrame(render);else raf=0}
+  function wake(){if(!raf)raf=requestAnimationFrame(render)}
+  function click(e){if(touchDevice())return;addSpot(e.clientX,e.clientY,94,1100,1);wake()}
+  function touchStart(e){if(!touchDevice()||!e.touches.length)return;touching=true;const t=e.touches[0];lastTouch={x:t.clientX,y:t.clientY};addSpot(t.clientX,t.clientY,65,720,1);wake()}
+  function touchMove(e){if(!touching||!e.touches.length)return;const t=e.touches[0],x=t.clientX,y=t.clientY;if(lastTouch){const dx=x-lastTouch.x,dy=y-lastTouch.y,d=Math.hypot(dx,dy),steps=Math.max(1,Math.ceil(d/22));for(let i=1;i<=steps;i++){const q=i/steps;addSpot(lastTouch.x+dx*q,lastTouch.y+dy*q,48+Math.random()*15,580+Math.random()*180,.96)}}lastTouch={x,y};wake()}
+  function touchEnd(){touching=false;lastTouch=null}
+  addEventListener('resize',resize,{passive:true});addEventListener('click',click);addEventListener('touchstart',touchStart,{passive:true});addEventListener('touchmove',touchMove,{passive:true});addEventListener('touchend',touchEnd,{passive:true});addEventListener('touchcancel',touchEnd,{passive:true});resize();
+})();
+</script>
+<script>
+(function(){
+  const logo=document.querySelector('.logo');
+  const menu=document.querySelector('.mobile-menu');
+  const backdrop=document.querySelector('.mobile-menu-backdrop');
+  if(!logo||!menu||!backdrop) return;
+  const isMobile=()=>window.matchMedia('(max-width:800px)').matches;
+  function setOpen(open){
+    menu.classList.toggle('open',open);
+    backdrop.classList.toggle('open',open);
+    menu.setAttribute('aria-hidden',String(!open));
+  }
+  logo.addEventListener('click',e=>{
+    if(!isMobile()) return;
+    e.preventDefault();
+    setOpen(!menu.classList.contains('open'));
+  });
+  backdrop.addEventListener('click',()=>setOpen(false));
+  menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>setOpen(false)));
+  window.addEventListener('resize',()=>{if(!isMobile()) setOpen(false)});
+})();
+</script>\n<script src="i18n.js"></script>
+</body>
+</html>
